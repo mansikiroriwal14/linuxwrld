@@ -1,0 +1,32 @@
+import pygame, sys
+
+pygame.init()
+screen = pygame.display.set_mode((300,300))
+font = pygame.font.Font(None,80)
+player = "*"
+board = [" "]*9
+
+while True:
+    screen.fill((255,255,255))
+    for i in range(1,3):
+        pygame.draw.line(screen,(0,0,0),(100*i,0),(100*i,300),3)
+        pygame.draw.line(screen,(0,0,0),(0,100*i),(300,100*i),3)
+
+    for i,v in enumerate(board):
+        screen.blit(font.render(v,True,(0,0,0)),((i%3)*100+30,(i//3)*100+10))
+
+    for e in pygame.event.get():
+        if e.type==pygame.QUIT: pygame.quit();sys.exit()
+
+        if e.type==pygame.MOUSEBUTTONDOWN:
+            pos=e.pos; idx=(pos[1]//100)*3+(pos[0]//100)
+            if board[idx]==" ":
+                board[idx]=player
+                wins=[(0,1,2),(3,4,5),(6,7,8),(0,3,6),(1,4,7),(2,5,8),(0,4,8),(2,4,6)]
+                if any(board[a]==board[b]==board[c]==player for a,b,c in wins):
+                    pygame.time.wait(500); print(player,"\\\\\\\\\\\\\\\\\\..........you win.........//////////////"); board=[" "]*9
+                elif " " not in board:
+                    pygame.time.wait(500); print("\\\\\\\\\\\\\\\\...........its a Draw!...........///////////////"); board=[" "]*9
+                player="O" if player=="*" else "*"
+
+    pygame.display.update()
