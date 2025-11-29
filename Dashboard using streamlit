@@ -1,0 +1,13 @@
+import streamlit as st
+import pandas as pd
+
+st.title("Simple Dashboard")
+
+data = pd.DataFrame({
+    "Month": ["Jan", "Feb", "Mar", "Apr"],
+    "Sales": [100, 150, 200, 250]
+})
+
+st.line_chart(data["Sales"])
+st.bar_chart(data["Sales"])
+st.dataframe(data)
