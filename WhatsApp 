@@ -1,0 +1,5 @@
+pywhatkit.sendwhatmsg("+91%%%%%%%", 
+                      "Hello, MY name is mansi and this is an automated WhatsApp message by using python", 
+                      21, 10)
+
+print("message was scheduled successfully!!")
