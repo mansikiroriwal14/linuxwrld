@@ -1,27 +1,20 @@
-# Movie Ticket Booking System
-
 print("- WELCOME TO CINEMA -")
-
-# Available movies
 movies = {
     1: "Avengers: Endgame",
     2: "KGF Chapter 2",
     3: "Pushpa 2"
 }
 
-# Ticket prices
 prices = {
     "Silver": 150,
     "Gold": 250,
     "Platinum": 350
 }
 
-# Display movies
 print("\nAvailable Movies:")
 for key, value in movies.items():
     print(f"{key}. {value}")
 
-# User selects movie
 choice = int(input("\nSelect movie number: "))
 
 if choice not in movies:
@@ -29,8 +22,6 @@ if choice not in movies:
 else:
     movie_name = movies[choice]
     print(f"\nYou selected: {movie_name}")
-
-    # Seat category
     print("\nSeat Categories:")
     print("1. Silver - ₹150")
     print("2. Gold - ₹250")
@@ -48,7 +39,6 @@ else:
         print("Invalid seat selection!")
         exit()
 
-    # Number of tickets
     tickets = int(input("Enter number of tickets: "))
     total = tickets * prices[seat_type]
 
@@ -58,4 +48,4 @@ else:
     print("Tickets:", tickets)
     print("Total Amount: ₹", total)
     print("---------------------------")
-    print("Booking Successful! Enjoy your movie 🎥🍿")
+    print("Booking Successful! Enjoy your movie ")
