@@ -1,0 +1,21 @@
+import smtplib
+import ssl
+from email.message import EmailMessage
+
+E = "bufferingblock@gmail.com"
+app_pass = "*******************"
+re = input("ENTER RECEIVER EMAIL : ")
+
+msg = EmailMessage()
+msg["From"] = E
+msg["To"] = re
+msg["Subject"] = "HELLO SIR "
+msg.set_content("My name is mansi currently pursuing Bteach in artificial intelligence and data science")
+
+context = ssl.create_default_context()
+
+with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+    server.login(E, app_pass)
+    server.send_message(msg)
+
+print("Email sent successfully!")
